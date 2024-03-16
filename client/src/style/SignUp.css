@@ -1,0 +1,68 @@
+.stackSignUp {
+    width: 30vw;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    color: white;
+    gap: 10px;
+}
+
+.form input {
+    width: 100%;
+    height: 40px;
+    border: none;
+    padding: 5px;
+    padding-left: 10px;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+    box-shadow: 3px 3px 5px rgba(255, 255, 255, 0.34);
+}
+
+.form label {
+    width: 100%;
+    font-size: 20px;
+}
+
+#submit {
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+#submit:hover {
+    box-shadow: none;
+}
+
+#submit:active {
+    box-shadow: -3px -3px 10px inset #262626;
+}
+
+.stackSignUp p {
+    width: 100%;
+    font-size: 18px;
+}
+
+.stackSignUp a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.errors {
+    color: #f00;
+}
+
+.message {
+    color: #0f0;
+}

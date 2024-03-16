@@ -1,0 +1,18 @@
+.stackAddTask button {
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    box-shadow: 3px 3px 5px rgba(255, 255, 255, 0.34);
+    cursor: pointer;
+}
+
+.stackAddTask button:hover {
+    box-shadow: none;
+}
+
+.stackAddTask button:active {
+    box-shadow: -3px -3px 5px inset #262626;
+}

@@ -1,0 +1,43 @@
+.navbar {
+    width: 100%;
+    height: 75px;
+    background-color: #262626;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 30px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.fullName {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+.navbar button {
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    box-shadow: 3px 3px 5px rgba(255, 255, 255, 0.34);
+}
+
+.navbar button:hover {
+    box-shadow: none;
+}
+
+.navbar button:active {
+    box-shadow: -3px -3px 5px inset #262626;
+}

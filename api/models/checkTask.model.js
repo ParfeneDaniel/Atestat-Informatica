@@ -26,7 +26,9 @@ export const taskValidator = checkSchema({
   },
   status: {
     in: ["body"],
-    isBoolean: true,
+    isInt: {
+      options: { min: 1, max: 2 },
+    },
     notEmpty: true,
   }
 });
@@ -69,7 +71,9 @@ export const updatedTaskValidator = checkSchema({
     optional: {
       options: { checkFalsy: true },
     },
-    isBoolean: true,
+    isInt: {
+      options: { min: 1, max: 2 },
+    },
     notEmpty: true,
   }
 });

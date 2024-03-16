@@ -1,0 +1,19 @@
+.stackSignIn {
+    width: 30vw;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.stackSignIn p {
+    width: 100%;
+    font-size: 18px;
+}
+
+.stackSignIn a {
+    text-decoration: none;
+    color: #fff;
+}

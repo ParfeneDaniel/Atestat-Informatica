@@ -18,16 +18,11 @@ export const addTask = async (req, res) => {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(422).json({ errors: errors.array() });
+      return res.status(422).json({ errors: "The task doesn't pass all rules" });
     }
     const { title, content, importance, status } = req.body;
     const id = req.user.id;
-    let userAttribute = await Attribute.findOne({ user: id });
-    if (!userAttribute) {
-      userAttribute = await Attribute.create({
-        user: id,
-      });
-    }
+    const userAttribute = await Attribute.findOne({ user: id });
     const task = new Task({ title, content, importance, status });
     userAttribute.tasks.push(task._id);
     await Promise.all([task.save(), userAttribute.save()]);
@@ -43,7 +38,7 @@ export const updateTask = async (req, res) => {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(422).json({ errors: errors.array() });
+      return res.status(422).json({ errors: "The task doesn't pass all rules" });
     }
     const id = req.params.id;
     await Task.findByIdAndUpdate(id, req.body);
