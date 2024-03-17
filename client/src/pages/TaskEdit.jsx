@@ -62,7 +62,6 @@ const TaskEdit = () => {
             "Content-Type": "application/json",
         },
       });
-      console.log(response);
       const data = await response.json();
       if (data.message) {
         navigate("/tasks/dashboard");

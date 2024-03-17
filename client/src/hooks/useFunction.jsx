@@ -6,7 +6,7 @@ export const sort1 = () => {
   const { search } = useChoiseContext();
   return [...tasks]
     .sort((taskA, taskB) => (taskA.updatedAt > taskB.updatedAt ? -1 : 1))
-    .filter((task) => task.title.includes(search));
+    .filter((task) => task.title.toLowerCase().includes(search));
 };
 
 export const sort2 = () => {
@@ -14,7 +14,7 @@ export const sort2 = () => {
   const { search } = useChoiseContext();
   return [...tasks]
     .sort((taskA, taskB) => (taskA.updatedAt > taskB.updatedAt ? 1 : -1))
-    .filter((task) => task.title.includes(search));
+    .filter((task) => task.title.toLowerCase().includes(search));
 };
 
 export const sort3 = () => {
@@ -30,7 +30,7 @@ export const sort3 = () => {
         ? -1
         : 1
     )
-    .filter((task) => task.title.includes(search));
+    .filter((task) => task.title.toLowerCase().includes(search));
 };
 
 export const sort4 = () => {
@@ -46,7 +46,7 @@ export const sort4 = () => {
         ? -1
         : 1
     )
-    .filter((task) => task.title.includes(search));
+    .filter((task) => task.title.toLowerCase().includes(search));
 };
 
 export const sort5 = () => {
@@ -54,7 +54,7 @@ export const sort5 = () => {
   const { search } = useChoiseContext();
   return tasks
     .filter((task) => task.status == 1)
-    .filter((task) => task.title.includes(search));
+    .filter((task) => task.title.toLowerCase().includes(search));
 };
 
 export const sort6 = () => {
@@ -62,7 +62,7 @@ export const sort6 = () => {
   const { search } = useChoiseContext();
   return tasks
     .filter((task) => task.status == 2)
-    .filter((task) => task.title.includes(search));
+    .filter((task) => task.title.toLowerCase().includes(search));
 };
 
 const useFunction = () => {

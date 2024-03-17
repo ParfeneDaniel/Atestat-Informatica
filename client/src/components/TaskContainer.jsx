@@ -4,7 +4,6 @@ import TaskCard from "./TaskCard";
 
 const TaskContainer = () => {
   const sortedTasks = useFunction();
-  console.log(sortedTasks);
   return (
     <div className="taskContainer">
       {sortedTasks.map((task, index) => {

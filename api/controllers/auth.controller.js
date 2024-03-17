@@ -39,11 +39,11 @@ export const signIn = async (req, res) => {
     const { username, password } = req.body;
     const user = await User.findOne({ username });
     if (!user) {
-      return res.status(404).json({ errors: "User not found " });
+      return res.status(404).json({ errors: "User not found" });
     }
     const validPassword = bcrypt.compareSync(password, user.password);
     if (!validPassword) {
-      return res.status(403).json({ errors: "Wrong credential " });
+      return res.status(403).json({ errors: "Wrong credential" });
     }
     const { password: hashedPassword, ...rest } = user._doc;
     generateTokenAndSetCookie(user._id, res);

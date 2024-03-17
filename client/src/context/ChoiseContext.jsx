@@ -10,5 +10,7 @@ export const ChoiseContextProvider = ({ children }) => {
   const [select, setSelect] = useState(1);
   const [search, setSearch] = useState("");
   const value = { select, setSelect, search, setSearch };
-  return <ChoiseContext.Provider value={value}>{children}</ChoiseContext.Provider>;
+  return (
+    <ChoiseContext.Provider value={value}>{children}</ChoiseContext.Provider>
+  );
 };
