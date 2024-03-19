@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import { useTaskContext } from "../context/TaskContext";
 import "../style/TaskEdit.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { useAuthContext } from "../context/AuthContext";
 
 const TaskEdit = () => {
   const { id } = useParams();
-  const { tasks } = useTaskContext();
+  const { setAuth } = useAuthContext();
+  const { tasks, setTasks } = useTaskContext();
   const [formData, setFormData] = useState({});
   const [loading, setLoading] = useState(false);
   const [loadingDelete, setLoadingDelete] = useState(false);
@@ -36,18 +38,26 @@ const TaskEdit = () => {
         },
         body: JSON.stringify(formData),
       });
-      const data = await response.json();
-      if (data.message) {
-        setMessage(data.message);
-        setError(null);
-      }
-      if (data.errors) {
-        setMessage(null);
-        setError(data.errors);
+      if (response.status == 401 || response.status == 403) {
+        localStorage.removeItem("user");
+        localStorage.removeItem("tasks");
+        setAuth("");
+        setTasks("");
+        navigate("/");
       } else {
-        setError(null);
+        const data = await response.json();
+        if (data.message) {
+          setMessage(data.message);
+          setError(null);
+        }
+        if (data.errors) {
+          setMessage(null);
+          setError(data.errors);
+        } else {
+          setError(null);
+        }
+        setLoading(false);
       }
-      setLoading(false);
     } catch (error) {
       setError(error);
       setLoading(false);
@@ -57,16 +67,24 @@ const TaskEdit = () => {
     try {
       setLoadingDelete(true);
       const response = await fetch(`/api/task/${id}`, {
-        method: "DELETE", 
+        method: "DELETE",
         headers: {
-            "Content-Type": "application/json",
+          "Content-Type": "application/json",
         },
       });
-      const data = await response.json();
-      if (data.message) {
-        navigate("/tasks/dashboard");
+      if (response.status == 401 || response.status == 403) {
+        localStorage.removeItem("user");
+        localStorage.removeItem("tasks");
+        setAuth("");
+        setTasks("");
+        navigate("/");
+      } else {
+        const data = await response.json();
+        if (data.message) {
+          navigate("/tasks/dashboard");
+        }
+        setLoadingDelete(false);
       }
-      setLoadingDelete(false);
     } catch (error) {
       console.log(error);
     }
@@ -116,7 +134,9 @@ const TaskEdit = () => {
         </form>
         {error ? <p className="errors">{error}</p> : ""}
         {message ? <p className="message">{message}</p> : ""}
-        <button disabled={loadingDelete} onClick={handleDelete}>{loadingDelete ? "Deleting..." : "Delete Task"}</button>
+        <button disabled={loadingDelete} onClick={handleDelete}>
+          {loadingDelete ? "Deleting..." : "Delete Task"}
+        </button>
         <Link to="/tasks/dashboard">
           <p>Go to dashboard</p>
         </Link>

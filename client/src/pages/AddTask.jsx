@@ -1,8 +1,13 @@
 import { useState } from "react";
 import "../style/AddTask.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuthContext } from "../context/AuthContext";
+import { useTaskContext } from "../context/TaskContext";
 
 const AddTask = () => {
+  const { setAuth } = useAuthContext();
+  const { setTasks } = useTaskContext();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -22,18 +27,26 @@ const AddTask = () => {
         },
         body: JSON.stringify(formData),
       });
-      const data = await response.json();
-      if (data.message) {
-        setMessage(data.message);
-        setError(null);
-      }
-      if (data.errors) {
-        setError(data.errors);
-        setMessage(null);
+      if (response.status == 401 || response.status == 403) {
+        localStorage.removeItem("user");
+        localStorage.removeItem("tasks");
+        setAuth("");
+        setTasks("");
+        navigate("/");
       } else {
-        setError(null);
+        const data = await response.json();
+        if (data.message) {
+          setMessage(data.message);
+          setError(null);
+        }
+        if (data.errors) {
+          setError(data.errors);
+          setMessage(null);
+        } else {
+          setError(null);
+        }
+        setLoading(false);
       }
-      setLoading(false);
     } catch (error) {
       setError(error);
       setLoading(false);
