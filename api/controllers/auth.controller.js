@@ -8,7 +8,9 @@ export const signUp = async (req, res) => {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(422).json({ errors: "Please provide a password with minimum lenght of 8" });
+      return res
+        .status(422)
+        .json({ errors: "Please provide a password with minimum lenght of 8" });
     }
     const { firstName, lastName, username, password } = req.body;
     const user = await User.findOne({ username });
@@ -24,7 +26,7 @@ export const signUp = async (req, res) => {
     });
     const userAttribute = await Attribute.create({
       user: newUser.id,
-    })
+    });
     await Promise.all([await newUser.save(), await userAttribute.save()]);
     return res.status(200).json({ message: "User was successfully created" });
   } catch (error) {

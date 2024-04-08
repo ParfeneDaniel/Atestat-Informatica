@@ -18,7 +18,9 @@ export const addTask = async (req, res) => {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(422).json({ errors: "The task doesn't pass all rules" });
+      return res
+        .status(422)
+        .json({ errors: "The task doesn't pass all rules" });
     }
     const { title, content, importance, status } = req.body;
     const id = req.user.id;
@@ -38,7 +40,9 @@ export const updateTask = async (req, res) => {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(422).json({ errors: "The task doesn't pass all rules" });
+      return res
+        .status(422)
+        .json({ errors: "The task doesn't pass all rules" });
     }
     const id = req.params.id;
     await Task.findByIdAndUpdate(id, req.body);

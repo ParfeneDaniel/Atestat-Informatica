@@ -9,7 +9,7 @@ const TashView = () => {
   const task = tasks.find((task) => task._id == id);
   const handleClick = () => {
     navigate("/tasks/dashboard");
-  }
+  };
   return (
     <div className="background">
       <div className="stackViewTask">

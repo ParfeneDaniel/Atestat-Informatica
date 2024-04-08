@@ -21,7 +21,7 @@ const Navbar = () => {
         localStorage.removeItem("tasks");
         setAuth("");
         setTasks("");
-        navigate("/"); 
+        navigate("/");
       }
     } catch (error) {
       console.log(error);

@@ -30,7 +30,7 @@ export const taskValidator = checkSchema({
       options: { min: 1, max: 2 },
     },
     notEmpty: true,
-  }
+  },
 });
 
 export const updatedTaskValidator = checkSchema({
@@ -75,5 +75,5 @@ export const updatedTaskValidator = checkSchema({
       options: { min: 1, max: 2 },
     },
     notEmpty: true,
-  }
+  },
 });

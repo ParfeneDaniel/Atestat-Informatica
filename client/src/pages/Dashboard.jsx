@@ -37,7 +37,7 @@ const Dashboard = () => {
     <div className="backgroundDashboard">
       <Navbar />
       <Choises />
-      {tasks? <TaskContainer /> : ""}
+      {tasks ? <TaskContainer /> : ""}
     </div>
   );
 };

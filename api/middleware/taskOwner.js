@@ -1,10 +1,12 @@
 import Attribute from "../models/attribute.model.js";
 
-export const commentOwner = async (req, res, next) => {
+export const taskOwner = async (req, res, next) => {
   try {
     const id = req.params.id;
     const userId = req.user.id;
-    const isUserOwner = await Attribute.findOne({ $and: [{ user: userId }, { tasks: id }] });
+    const isUserOwner = await Attribute.findOne({
+      $and: [{ user: userId }, { tasks: id }],
+    });
     if (!isUserOwner) {
       return res.status(403).json({ message: "Task is not yours" });
     }

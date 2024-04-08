@@ -7,7 +7,7 @@ const App = () => {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate("/tasks/dashboard");
-  }
+  };
   return (
     <div className="background">
       <div className="stack">
