@@ -32,6 +32,11 @@
     border-bottom: 1px solid #fff;
 }
 
+.taskContent {
+    white-space: pre-wrap;
+    overflow: hidden;
+}
+
 .taskStatus {
     border-bottom: none;
 }
