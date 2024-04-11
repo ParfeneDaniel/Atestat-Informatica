@@ -27,7 +27,7 @@ export const signUp = async (req, res) => {
     const userAttribute = await Attribute.create({
       user: newUser.id,
     });
-    await Promise.all([await newUser.save(), await userAttribute.save()]);
+    await Promise.all([newUser.save(), userAttribute.save()]);
     return res.status(200).json({ message: "User was successfully created" });
   } catch (error) {
     res
