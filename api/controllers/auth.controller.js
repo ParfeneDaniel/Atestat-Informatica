@@ -59,7 +59,7 @@ export const signIn = async (req, res) => {
 
 export const signOut = (req, res) => {
   try {
-    res.clearCookie("jwt").status(200).json({ message: "SignOut success! " });
+    res.clearCookie("jwt").status(200).json({ message: "SignOut success!" }); 
   } catch (error) {
     return res
       .status(500)
