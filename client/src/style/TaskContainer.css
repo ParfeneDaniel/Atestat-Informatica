@@ -2,8 +2,8 @@
     display: flex;
     min-height: 100%;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     gap: 50px;
-    padding-bottom: 50px;
+    padding: 50px;
 }
